@@ -1,0 +1,217 @@
+{
+  "version": 1,
+  "locale": "en_US",
+  "platform": "4.1.0",
+  "metadata": {
+    "appmode": "static",
+    "primary_rmd": null,
+    "primary_html": "index.html",
+    "content_category": null,
+    "has_parameters": false
+  },
+  "packages": null,
+  "files": {
+    "404.html": {
+      "checksum": "18f9438210168f159e5f287061c2c238"
+    },
+    "articles/exploring_subgraph_results_files/accessible-code-block-0.0.1/empty-anchor.js": {
+      "checksum": "53c42ac72d71beb8e6dbffe86ab543d6"
+    },
+    "articles/exploring_subgraph_results_files/d3v5-5.0.0/API.md": {
+      "checksum": "12ad52d8706d655d48c429eb004dd71d"
+    },
+    "articles/exploring_subgraph_results_files/d3v5-5.0.0/CHANGES.md": {
+      "checksum": "d9e1e9dd186067e38a1dbc82bf427de0"
+    },
+    "articles/exploring_subgraph_results_files/d3v5-5.0.0/d3.min.js": {
+      "checksum": "3f5bab385bd2e640ce986c9ae9410d17"
+    },
+    "articles/exploring_subgraph_results_files/d3v5-5.0.0/LICENSE": {
+      "checksum": "0679931d76eb2f1dd1915249da84a722"
+    },
+    "articles/exploring_subgraph_results_files/d3v5-5.0.0/README.md": {
+      "checksum": "733a562a74d22165d0d2aebda6adcd1d"
+    },
+    "articles/exploring_subgraph_results_files/d3v5-5.9.2/API.md": {
+      "checksum": "11a841452d40d70cd03d6b413a417d99"
+    },
+    "articles/exploring_subgraph_results_files/d3v5-5.9.2/CHANGES.md": {
+      "checksum": "651f33d8c00729f56b8628fa8c948368"
+    },
+    "articles/exploring_subgraph_results_files/d3v5-5.9.2/d3.min.js": {
+      "checksum": "679a7c8aa171889e772bfb39701e5e88"
+    },
+    "articles/exploring_subgraph_results_files/d3v5-5.9.2/LICENSE": {
+      "checksum": "0679931d76eb2f1dd1915249da84a722"
+    },
+    "articles/exploring_subgraph_results_files/d3v5-5.9.2/README.md": {
+      "checksum": "733a562a74d22165d0d2aebda6adcd1d"
+    },
+    "articles/exploring_subgraph_results_files/figure-html/unnamed-chunk-2-1.png": {
+      "checksum": "7ad1fd9f191a545727ef773347bc6732"
+    },
+    "articles/exploring_subgraph_results_files/header-attrs-2.3.9/header-attrs.js": {
+      "checksum": "9c32b58ed5fd8fe2efbd5bd7023cdef0"
+    },
+    "articles/exploring_subgraph_results_files/htmlwidgets-1.5.1/htmlwidgets.js": {
+      "checksum": "4ea5c55cd0143175643435a640086c16"
+    },
+    "articles/exploring_subgraph_results_files/r2d3-binding-0.2.3/r2d3.js": {
+      "checksum": "a2e6f297e8523744cc6bbb2856df7eff"
+    },
+    "articles/exploring_subgraph_results_files/r2d3-binding-0.2.4/r2d3.js": {
+      "checksum": "a2e6f297e8523744cc6bbb2856df7eff"
+    },
+    "articles/exploring_subgraph_results_files/r2d3-render-0.1.0/r2d3-render.js": {
+      "checksum": "85f6f129e56ae00712320b93b63510fd"
+    },
+    "articles/exploring_subgraph_results_files/webcomponents-2.0.0/webcomponents.js": {
+      "checksum": "21db988b54aedc8fbc5d6ffb6aa98a8c"
+    },
+    "articles/exploring_subgraph_results.html": {
+      "checksum": "c6a27aa07122499c90a5c86aa781f2bc"
+    },
+    "articles/index.html": {
+      "checksum": "394b148e049bc83cb71ba74ccdd54ef3"
+    },
+    "articles/tests/testing_embed_files/d3v5-5.9.2/API.md": {
+      "checksum": "11a841452d40d70cd03d6b413a417d99"
+    },
+    "articles/tests/testing_embed_files/d3v5-5.9.2/CHANGES.md": {
+      "checksum": "651f33d8c00729f56b8628fa8c948368"
+    },
+    "articles/tests/testing_embed_files/d3v5-5.9.2/d3.min.js": {
+      "checksum": "679a7c8aa171889e772bfb39701e5e88"
+    },
+    "articles/tests/testing_embed_files/d3v5-5.9.2/LICENSE": {
+      "checksum": "0679931d76eb2f1dd1915249da84a722"
+    },
+    "articles/tests/testing_embed_files/d3v5-5.9.2/README.md": {
+      "checksum": "733a562a74d22165d0d2aebda6adcd1d"
+    },
+    "articles/tests/testing_embed_files/htmlwidgets-1.5.1/htmlwidgets.js": {
+      "checksum": "4ea5c55cd0143175643435a640086c16"
+    },
+    "articles/tests/testing_embed_files/r2d3-binding-0.2.4/r2d3.js": {
+      "checksum": "a2e6f297e8523744cc6bbb2856df7eff"
+    },
+    "articles/tests/testing_embed_files/r2d3-render-0.1.0/r2d3-render.js": {
+      "checksum": "85f6f129e56ae00712320b93b63510fd"
+    },
+    "articles/tests/testing_embed_files/webcomponents-2.0.0/webcomponents.js": {
+      "checksum": "21db988b54aedc8fbc5d6ffb6aa98a8c"
+    },
+    "articles/tests/testing_embed.html": {
+      "checksum": "1f9626da65275090f6c111f6e2d6e5d5"
+    },
+    "authors.html": {
+      "checksum": "21dd6dbcc5ec3777aa10fac98a9a0ada"
+    },
+    "bootstrap-toc.css": {
+      "checksum": "5eec6702c35b15a8c2c123301987735d"
+    },
+    "bootstrap-toc.js": {
+      "checksum": "aaa610b29d895e1128447e76b9bc0076"
+    },
+    "docsearch.css": {
+      "checksum": "828dbea96017a994efccb7c30c041577"
+    },
+    "docsearch.js": {
+      "checksum": "2f3c1f7995c9f4f966323f008e3984ad"
+    },
+    "index.html": {
+      "checksum": "e79bd111c92280babe6d465a37aeae6b"
+    },
+    "LICENSE-text.html": {
+      "checksum": "f300d6ef1a5c49a22940d2f2db558372"
+    },
+    "LICENSE.html": {
+      "checksum": "8a06d221e0959f69d2964bac4231a197"
+    },
+    "link.svg": {
+      "checksum": "4759f31f8a585e9af173fc579d730265"
+    },
+    "pkgdown.css": {
+      "checksum": "0bfb8788900f85687f12d33c3a75c9f0"
+    },
+    "pkgdown.js": {
+      "checksum": "e0bdbf3c19a222385db6b4dae0682e5b"
+    },
+    "pkgdown.yml": {
+      "checksum": "9f495dca66a158f69aa3f812b79233a5"
+    },
+    "reference/bootstrap_info_interval.html": {
+      "checksum": "1be2afc32dc0ae01bef62f6ec194ebea"
+    },
+    "reference/build_count_vec.html": {
+      "checksum": "65d4fa700806096812cb71a81b305370"
+    },
+    "reference/build_occurrence_vec.html": {
+      "checksum": "1286a1b4583cb10d71b1b5c058551173"
+    },
+    "reference/build_relative_associations.html": {
+      "checksum": "4e252632d5bc6aca1e4df66b0a8daed8"
+    },
+    "reference/calc_ent_from_table.html": {
+      "checksum": "7200450ea542bdcda8fc393b5fc80b3b"
+    },
+    "reference/calc_entropy_net.html": {
+      "checksum": "b402ae3fba0f4577dbb5fd6aea3760b1"
+    },
+    "reference/calc_joint_ent.html": {
+      "checksum": "3dc7ced4c5627eb10d44a1ecc7859ad0"
+    },
+    "reference/calc_mutual_info.html": {
+      "checksum": "8ea93d3d19c5060d2bb1062764815608"
+    },
+    "reference/calculate_subgraph_structure_rcpp.html": {
+      "checksum": "daea83a84b4fd57503f614bcb6ece414"
+    },
+    "reference/calculate_subgraph_structure.html": {
+      "checksum": "56d744054aa19bb087ce7d0222d2eb02"
+    },
+    "reference/draw_null_info_binary.html": {
+      "checksum": "2a69270403d908b4b6567ac1ad9b88a0"
+    },
+    "reference/expand_combinations.html": {
+      "checksum": "a15b44504fabf16979037b9fc851c9d7"
+    },
+    "reference/explore_subgraph_structure.html": {
+      "checksum": "8b8858e4eeb7f80e6dba00868d70aca4"
+    },
+    "reference/find_all_subgraphs.html": {
+      "checksum": "9f2da1d6ec5b57402bafbba0d98eb4a9"
+    },
+    "reference/gather_avg_strength.html": {
+      "checksum": "78a3577d03f85b543a212214093dd9fa"
+    },
+    "reference/index.html": {
+      "checksum": "4e11e99f596167c80aba74c4bfd8e2d3"
+    },
+    "reference/join_pair_lists.html": {
+      "checksum": "bca678e947904579f74cf412f82b106a"
+    },
+    "reference/partial_entropy.html": {
+      "checksum": "17e51a16361f83f37960ebeaef56eb49"
+    },
+    "reference/pipe.html": {
+      "checksum": "a21a47e6d8ab6aec79d119af2aa7c484"
+    },
+    "reference/simulate_sticky_association_network.html": {
+      "checksum": "8fc2128f8c96b8ef15f2643a2598bac7"
+    },
+    "reference/tidyeval.html": {
+      "checksum": "a8966ac4dc2cc29ce93dc4600c8e2b0d"
+    },
+    "reference/visualize_all_subgraphs.html": {
+      "checksum": "c15fabc1c08ffa897cbd0bf3477609e9"
+    },
+    "reference/visualize_association_network.html": {
+      "checksum": "7f2ea6a5c0a8d6c8c7d636c02f3ed554"
+    },
+    "reference/visualize_subgraph_structure.html": {
+      "checksum": "56641495d716cd646fa451c9afb10c1a"
+    }
+  },
+  "users": null
+}
