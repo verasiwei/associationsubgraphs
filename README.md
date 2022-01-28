@@ -17,7 +17,7 @@ through visualization and various network-analysis statistics.
 
 ## Installation
 
-To install the package from from [GitHub](https://github.com/) run:
+To install the package from GitHub run:
 
 ``` r
 # install.packages("devtools")

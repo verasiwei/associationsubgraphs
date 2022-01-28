@@ -20,7 +20,7 @@ Imports:
     Rcpp,
     r2d3 (>= 0.2.4)
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.2
 Suggests: 
     roxygen2,
     knitr,

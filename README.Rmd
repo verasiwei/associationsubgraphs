@@ -23,7 +23,7 @@ The goal of `associationsubgraphs` is to provide tools to investigate associatio
 ## Installation
 
 
-To install the package from from [GitHub](https://github.com/) run:
+To install the package from GitHub run:
 
 ``` r
 # install.packages("devtools")
