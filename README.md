@@ -4,7 +4,6 @@
 # associationsubgraphs
 
 <!-- badges: start -->
-
 <!-- badges: end -->
 
 The goal of `associationsubgraphs` is to provide tools to investigate
@@ -22,5 +21,5 @@ To install the package from from [GitHub](https://github.com/) run:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("nstrayer/associationsubgraphs")
+devtools::install_github("tbilab/associationsubgraphs")
 ```

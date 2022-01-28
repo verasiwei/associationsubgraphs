@@ -12,7 +12,9 @@ visualize_subgraph_structure(
   warn_of_mismatches = TRUE,
   width = "100\%",
   height = "800px",
-  default_step = "min_max_rule"
+  default_step,
+  pinned_node = NULL,
+  subgraph_messages = TRUE
 )
 }
 \arguments{
@@ -50,6 +52,14 @@ logic as \code{giant_component_local} just the threshold for a giant component
 is based on all possible nodes rather than those seen. This gives the most
 accurate clusterings if true cluster structure is non-hierarchical.
 Alternatively you can provided the step as an integer value.}
+
+\item{pinned_node}{Name (matching \code{id} column of \code{association_pairs}) of node
+to highlight in results. If no \code{default_step} is set, then the
+visualization intializes to the first instance of this node occuring in the
+subgraphs.}
+
+\item{subgraph_messages}{Should messages be sent about the calculation of the
+subgraph structure if it needs to be calculated by the function?}
 }
 \value{
 Interactive javascript visualization of association network subgraphs

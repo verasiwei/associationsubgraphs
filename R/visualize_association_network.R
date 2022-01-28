@@ -198,7 +198,7 @@ visualize_subgraph_structure <- function(association_pairs,
 
     last_edge <- max(
       which(subgraph_results$rel_max_size > 0.95 &  subgraph_results$n_nodes_seen > tenth_of_nodes)[1],
-      default_step + 10
+      default_step + 10,na.rm = T
     )
 
     # The head is in here because sometimes we have a junk row at end of subgraph results (needs fixing)

@@ -2,9 +2,15 @@ Package: associationsubgraphs
 Type: Package
 Title: Investigate association networks using relative association and intepretable subgraph clustering
 Version: 0.1.0
-Author: Nick Strayer
-URL: http://nickstrayer.me/associationsubgraphs, https://github.com/nstrayer/associationsubgraphs
-Maintainer: Nick Strayer <nick.strayer@gmail.com>
+URL: https://github.com/tbilab/associationsubgraphs/, https://github.com/tbilab/associationsubgraphs/
+Authors@R: c(
+    person("Nick", "Strayer", role = c("aut", "cre")
+    ),
+    person("Siwei", "Zhang", role = c("cre")
+    ),
+    person("Yaomin", "Xu", role = c("ths","cre")
+    )
+  )
 Description: The goal of associationsubgraphs is to provide tools to investigate association networks of any type using interpretable methods and exploratory visualizations. The main premise is to break down association networks into distinct subgraphs of variables connected to each other (often called components) above some association strength threshold. Includes functions for transforming associations to relative and investigating the found structure across all association thresholds through visualization and various network-analysis statistics. 
 License: MIT + file LICENSE
 Encoding: UTF-8

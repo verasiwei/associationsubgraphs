@@ -5,6 +5,11 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // calculate_subgraph_structure_rcpp
 List calculate_subgraph_structure_rcpp(DataFrame associations, const String& a_col, const String& b_col, const String& w_col, const bool return_subgraph_membership);
 RcppExport SEXP _associationsubgraphs_calculate_subgraph_structure_rcpp(SEXP associationsSEXP, SEXP a_colSEXP, SEXP b_colSEXP, SEXP w_colSEXP, SEXP return_subgraph_membershipSEXP) {
