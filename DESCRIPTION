@@ -2,7 +2,7 @@ Package: associationsubgraphs
 Type: Package
 Title: Investigate association networks using relative association and intepretable subgraph clustering
 Version: 0.1.0
-URL: https://github.com/tbilab/associationsubgraphs/, https://github.com/tbilab/associationsubgraphs/
+URL: https://github.com/tbilab/associationsubgraphs/ https://github.com/tbilab/associationsubgraphs/
 Authors@R: c(
     person("Nick", "Strayer", role = c("aut", "cre")
     ),
