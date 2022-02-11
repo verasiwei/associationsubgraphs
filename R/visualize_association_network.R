@@ -180,7 +180,7 @@ visualize_subgraph_structure <- function(association_pairs,
   } else if(default_step == "pinned_node"){
     # Locate when the pinned node first occurs in the network
     default_step <- which(association_pairs$a == pinned_node | association_pairs$b == pinned_node)[1]
-    if(length(default_step) == 0){
+    if((length(default_step) == 0) | (is.na(default_step))){
       stop(paste("The requested pinned node", pinned_node, "does not appear in the passed association pairs"))
     }
   } else {
@@ -198,8 +198,7 @@ visualize_subgraph_structure <- function(association_pairs,
 
     last_edge <- max(
       which(subgraph_results$rel_max_size > 0.95 &  subgraph_results$n_nodes_seen > tenth_of_nodes)[1],
-      default_step + 10,na.rm = T
-    )
+      default_step + 10,na.rm = T)
 
     # The head is in here because sometimes we have a junk row at end of subgraph results (needs fixing)
     subgraph_results <- utils::head(
@@ -209,7 +208,7 @@ visualize_subgraph_structure <- function(association_pairs,
 
     # We can now get rid of all the excess edges we wont ever use
     max_num_edges <- utils::tail(subgraph_results$n_edges, 1)
-    association_pairs <- head(association_pairs, max_num_edges)
+    association_pairs <- utils::head(association_pairs, max_num_edges)
   }
 
 
