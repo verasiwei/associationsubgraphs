@@ -4,11 +4,11 @@ Title: Investigate association networks using relative association and intepreta
 Version: 0.1.0
 URL: http://github.com/tbilab/associationsubgraphs, http://github.com/tbilab/associationsubgraphs
 Authors@R: c(
-    person("Nick", "Strayer", role = c("aut", "cre")
+    person("Nick", "Strayer", role = c("aut")
     ),
-    person("Siwei", "Zhang", role = c("cre")
+    person("Siwei", "Zhang", role = c("cre"),email="verazsw@hotmail.com"
     ),
-    person("Yaomin", "Xu", role = c("ths","cre")
+    person("Yaomin", "Xu", role = c("ths")
     )
   )
 Description: The goal of associationsubgraphs is to provide tools to investigate association networks of any type using interpretable methods and exploratory visualizations. The main premise is to break down association networks into distinct subgraphs of variables connected to each other (often called components) above some association strength threshold. Includes functions for transforming associations to relative and investigating the found structure across all association thresholds through visualization and various network-analysis statistics. 

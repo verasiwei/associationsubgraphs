@@ -148,7 +148,7 @@ function setup_network_views({ div, all_edges, subgraph_info, sizes = {} }) {
     .data([
       { label: "num members", id: "size" },
       { label: "avg density", id: "density" },
-      { label: "total edge strength", id: "strength" },
+      { label: "avg edge strength", id: "strength" },
     ])
     .join("text")
     .text((d) => d.label)
