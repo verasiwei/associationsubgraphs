@@ -316,7 +316,7 @@ function setup_network_views({ div, all_edges, subgraph_info, sizes = {} }) {
 
     // Draw axes
 
-    const too_thin_for_unit_bars = subgraph_pos.size.h / largest_subgraph < 3;
+    const too_thin_for_unit_bars = subgraph_pos.size.h / largest_subgraph < 5; //<2:false
 
     subgraph.g
       .select_append("g.size_axis")
@@ -332,14 +332,14 @@ function setup_network_views({ div, all_edges, subgraph_info, sizes = {} }) {
 
     subgraph.g
       .selectAll(`text.size_labels`)
-      .data(subgraphs_df.head(too_thin_for_unit_bars ? 3 : 0))
+      .data(subgraphs_df.head(too_thin_for_unit_bars ? 6 : 0)) //too_thin_for_unit_bars ? 10 : 10
       .join("text")
       .text((d) => d.size)
       .attr("class", "size_labels")
       .attr("x", (d) => subgraph_X(d.id) + subgraph_X.bandwidth() / 2)
       .attr("text-anchor", "middle")
       .attr("text-size", "9px")
-      .attr("y", (d) => subgraph_pos.size.scale(d.size) - 1)
+      .attr("y", (d) => subgraph_pos.size.scale(d.size))
       .raise();
 
     subgraph.g
