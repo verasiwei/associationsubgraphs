@@ -68,6 +68,7 @@ subgraphs %>%
 
 ```
 
+
 ```{r}
 node_info <- virus_host_viruses %>% 
   dplyr::rename(id = virus_id) %>% 

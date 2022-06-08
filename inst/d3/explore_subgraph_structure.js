@@ -33,7 +33,7 @@ const network_views = setup_network_views({
 draw_timelines(div, {
   data: subgraph_info,
   sizing: viz_sizing.timelines,
-  margins: { left: 5, right: 30, top: 5, bottom: 20 },
+  margins: { left: 5, right: 30, top: 5, bottom: 30 },
   on_new_step: function (new_step) {
     network_views.set_to_step(new_step);
   },
@@ -1127,6 +1127,14 @@ function draw_timelines(
     })
     .attr("text-anchor", "end")
     .attr("x", max_label_width - 5);
+  
+  timelines.g
+    .append("text")
+    .attr("class", "x label")
+    .attr("text-anchor", "end")
+    .attr("x", w/2)
+    .attr("y",h+25)
+    .text("step →");
 
   const chart_w = w - max_label_width;
 
