@@ -316,7 +316,13 @@ function setup_network_views({ div, all_edges, subgraph_info, sizes = {} }) {
 
     // Draw axes
 
-    const too_thin_for_unit_bars = subgraph_pos.size.h / largest_subgraph < 5; //<5:false
+    const too_thin_for_unit_bars = subgraph_pos.size.h / largest_subgraph < 5; 
+    const largest_subgraph_10 = largest_subgraph >= 10;
+    var subgraph_size_10 = subgraphs.size;
+    //var subgraph_size_10_label = subgraph_size_10 ? 1:0;
+    //const subgraph_size_10_sum = d3.sum(subgraph_size_10_label);
+    const subgraph_size_10_sum = subgraph_size_10.reduce(function(n, val) {
+    return n + (val >= 10);}, 0);
 
     subgraph.g
       .select_append("g.size_axis")
@@ -332,7 +338,7 @@ function setup_network_views({ div, all_edges, subgraph_info, sizes = {} }) {
 
     subgraph.g
       .selectAll(`text.size_labels`)
-      .data(subgraphs_df.head(too_thin_for_unit_bars ? subgraphs_df.length : subgraphs_df.length)) //too_thin_for_unit_bars ? 10 : 10
+      .data(subgraphs_df.head(largest_subgraph_10 ? subgraph_size_10_sum:0)) 
       .join("text")
       .text((d) => d.size)
       .attr("class", "size_labels")
