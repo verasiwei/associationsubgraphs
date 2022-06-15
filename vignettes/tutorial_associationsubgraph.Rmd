@@ -1,7 +1,198 @@
 ---
 title: "Tutorial of associationsubgraphs"
-author: "Siwei Zhang"
+# author: "Siwei Zhang"
 date: "6/13/2022"
 output: html_document
 ---
+
+```{r setup, echo=FALSE, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, out.width = "100%")
+library(dplyr)
+library(tidyverse)
+library(phewasHelper)
+library(associationsubgraphs)
+
+```
+
+# Associationsubgraphs
+
+* This tutorial provides an introduction to `associationsubgraphs` package, and to conducting the complete analysis including all the steps from the structure of the input data to the final visualization using an example data set. 
+
+## Install package and load libraries
+
+```{r, echo=TRUE, eval=FALSE, cache=FALSE, warning=FALSE,message=FALSE}
+devtools::install_github("tbilab/associationsubgraphs")
+
+library(tidyverse)
+library(associationsubgraphs)
+
+```
+
+## Example input data sets
+
+* We'll use `Phecode data` available in the `associationsubgraphs` package as an example.
+
+* The format of the input data set is similar to the example `comorbidity` data set, which is a dataframe including columns `a` and `b` representing the ids of the variables or nodes, and column `strength` that is a numeric indicator of strength of association (higher = stronger).
+
+* In this example, node pairs refer to [Phecode Pairs](https://phewascatalog.org/phecodes) where strength is extracted from association study and represents how strongly two nodes are associated with each other. It includes all combinations of pair-wise Phecodes, which will be used for the analysis.
+
+* Please remove node pairs with `NA` missing values of `strength` in the data set.
+
+```{r, echo=TRUE, cache=FALSE, warning=FALSE,message=FALSE}
+data("association_pairs") 
+
+association_pairs = association_pairs %>% 
+  arrange(desc(strength)) %>%
+  filter(!is.na(strength))
+
+dim(association_pairs)
+head(association_pairs) %>% 
+  knitr::kable()
+
+```
+
+* Associations of `594.10: Calculus of kidney` with other Phecodes. To explore and visualize the large-scale associations even if you have a particular interest in a node in your network, using the network that includes all combinations of pair-wise Phecodes rather than the network only includes the connection of the interested nodes with other nodes. 
+
+```{r, echo=TRUE, cache=FALSE, warning=FALSE,message=FALSE}
+association_pairs %>%
+  filter(a == "594.10") %>%
+  head() %>% 
+  knitr::kable()
+```
+
+* Phecode table is shown below
+
+```{r, echo=TRUE, cache=FALSE, warning=FALSE,message=FALSE}
+data("phecode_def") 
+
+head(phecode_def) %>%
+  dplyr::select(phecode,description,group) %>% 
+  knitr::kable()
+
+```
+
+
+## Finding all subgraphs in pairs for every subset of edges
+
+* Using `calculate_subgraph_structure()` to calculate the set of subgraphs at every threshold, and the associations were sorted in descending order of strength. The nodes connected by the highest association strength are set as a cluster. The second-highest association strength is added. Specifically, if at least one node in the nodes pair with the second-highest association is shared with the first cluster that built based on the highest association, the nodes pair with the second-highest association will be added to the existing cluster including the non-shared node. Otherwise, if both nodes with the second-highest association are not shared with the first cluster, then a new separate cluster is created. This procedure is repeated for all association pairs.
+
+```{r, echo=TRUE, cache=FALSE, warning=FALSE,message=FALSE}
+subgraphs <- association_pairs %>% 
+  calculate_subgraph_structure()
+
+subgraphs %>% 
+  dplyr::select(-subgraphs) %>% 
+  head() %>% 
+  knitr::kable()
+
+```
+
+
+## Interactive association subgraphs visualization
+
+* Values in column `a` and `b` of `association_pairs` will be shown in the visualization, converting Phecode to Phecode description for better visualization.
+
+* Preparing a dataframe that has a column id that corresponds to the variables coded in a and b of association_pairs that contains additional info of the nodes. For example, color and Phecode category were added to each Phecode. And the added information will be shown in the table after clicking a subgraph to see details. 
+
+```{r, echo=TRUE, cache=FALSE, warning=FALSE,message=FALSE}
+#convert Phecode to Phecode description
+association_pairs = association_pairs %>%
+  rename(phecode=a) %>%
+  left_join(.,phecode_def[,c("phecode","description")],by="phecode") %>%
+  rename(a=description) %>%
+  dplyr::select(-phecode) %>%
+  rename(phecode=b) %>%
+  left_join(.,phecode_def[,c("phecode","description")],by="phecode") %>%
+  rename(b=description) %>%
+  dplyr::select(-phecode)
+
+#extract node id
+node_info <- c(association_pairs$a,association_pairs$b) %>%
+  unique() %>%
+  as_tibble() %>%
+  rename(id = value) %>%
+  left_join(.,phecode_def %>% dplyr::select(phecode,description,group,color) %>% dplyr::rename(id=description),by="id") %>%
+  arrange(group)
+
+head(node_info) %>%
+  knitr::kable()
+```
+
+* Visualizing the subgraph search
+
+ + The `subgraphs` includes the `rel_max_size`: size of the largest subgraph relative to the combined size of all other subgraphs, `n_subgraphs`: the number of subgraphs and `n_triples`: the number of subgraphs with at least three members. We choose the minimum `rel_max_size`, maximum `n_subgraphs` and `n_triples` to take a look.
+ 
+ + Using "largest-smallest" rule for finding the optimal threshold by tracking the minimum size of the largest subgraph relative to the combined size of all other subgraphs.
+
+```{r, echo=TRUE, cache=FALSE, warning=FALSE,message=FALSE}
+min_rel <- subgraphs %>%
+  filter(rel_max_size == min(rel_max_size)) %>%
+  tail(1)
+
+max_num_subgraphs <- subgraphs %>%
+  filter(n_subgraphs == max(n_subgraphs)) %>%
+  tail(1)
+
+max_num_triples <- subgraphs %>%
+  filter(n_triples == max(n_triples)) %>%
+  tail(1)
+
+subgraphs %>%
+  # filter(rel_max_size < 0.5) %>%
+  dplyr::select(
+    strength,
+    n_subgraphs,
+    max_size,
+    rel_max_size,
+    avg_density,
+    n_triples,
+    step
+  ) %>% 
+  pivot_longer(-step) %>%
+  filter(step <= 5000) %>%
+  ggplot(aes(x = step, y = value)) +
+  geom_step() +
+  geom_vline(xintercept = min_rel$step, color = 'orangered') +
+  geom_vline(xintercept = max_num_subgraphs$step, color = 'forestgreen') +
+  geom_vline(xintercept = max_num_triples$step, color = 'steelblue') +
+  facet_grid(rows = vars(name), scales = "free_y")
+
+
+```
+
+
+```{r, echo=TRUE, cache=FALSE, warning=FALSE,message=FALSE}
+#visualize
+visualize_subgraph_structure(
+  association_pairs,
+  node_info = node_info,
+  subgraph_results = subgraphs,
+  trim_subgraph_results = TRUE
+)
+
+```
+
+
+## "Pinning" a node
+
+* If you have a particular interest in a node in your network you can "pin" that node in the visualization so the initial start point of the visualization is when that node is first added to the visible subgraphs. For instance, if you are interested in `Calculus of kidney`, simply supply the id of `"Calculus of kidney"` to the `visualize_subgraph_structure()` function and you will be automatically taken to where `Calculus of kidney` first gets grouped into a subgraph. 
+
+```{r, echo=TRUE, cache=FALSE, warning=FALSE,message=FALSE}
+#visualize
+visualize_subgraph_structure(
+  association_pairs,
+  node_info = node_info,
+  subgraph_results = subgraphs,
+  trim_subgraph_results = TRUE,
+  pinned_node = "Calculus of kidney"
+)
+```
+
+
+
+
+
+
+
+
 
