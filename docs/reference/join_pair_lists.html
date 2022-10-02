@@ -28,7 +28,7 @@ ignored."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/ma
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -67,7 +67,7 @@ ignored.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">join_pair_lists</span><span class="op">(</span><span class="va">pairs_a</span>, <span class="va">pairs_b</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">join_pair_lists</span><span class="op">(</span><span class="va">pairs_a</span>, <span class="va">pairs_b</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -75,10 +75,13 @@ ignored.</p>
     <dl><dt>pairs_a, pairs_b</dt>
 <dd><p>association pairs list with columns <code>a</code> and <code>b</code>
 encoding ids</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Joined version of the two association pairs with any missing pairs
+    
+
+<p>Joined version of the two association pairs with any missing pairs
 from <code>pairs_b</code> set as <code>NA</code> for non-id columns.</p>
     </div>
 
@@ -94,7 +97,7 @@ from <code>pairs_b</code> set as <code>NA</code> for non-id columns.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

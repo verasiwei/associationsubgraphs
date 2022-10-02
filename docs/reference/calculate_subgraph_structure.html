@@ -28,7 +28,7 @@ descending order of strength."><!-- mathjax --><script src="https://cdnjs.cloudf
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -67,11 +67,11 @@ descending order of strength.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">calculate_subgraph_structure</span><span class="op">(</span>
-  <span class="va">association_pairs</span>,
-  strength_column <span class="op">=</span> <span class="st">"strength"</span>,
-  return_subgraph_membership <span class="op">=</span> <span class="cn">FALSE</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">calculate_subgraph_structure</span><span class="op">(</span></span>
+<span>  <span class="va">association_pairs</span>,</span>
+<span>  strength_column <span class="op">=</span> <span class="st">"strength"</span>,</span>
+<span>  return_subgraph_membership <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -80,17 +80,24 @@ descending order of strength.</p>
 <dd><p>dataframe with columns <code>a</code> and <code>b</code> representing the
 ids of the variables or nodes and columns <code>strength</code> that is a numeric
 indicator of strength of association (higher = stronger).</p></dd>
+
+
 <dt>strength_column</dt>
 <dd><p>Id of column that encodes the strength of the associations for pairs</p></dd>
+
+
 <dt>return_subgraph_membership</dt>
 <dd><p>Should a column with a named integer vector
 of each node's subgraph membership be returned? This can be useful for
 comparing consistency of structure across different networks etc. but comes
 at the cost of speed and memory usage.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Dataframe with the following columns for each unique subgraph state.</p><table class="table table"><tr><td><strong>Column</strong></td><td></td><td><strong>Description</strong></td></tr><tr><td><code>step</code></td><td></td><td>Integer step, aka the number of unique edge strengths in network at state</td></tr><tr><td><code>n_edges</code></td><td></td><td>How many edges have been added thus far</td></tr><tr><td><code>strength</code></td><td></td><td>The lowest strength of the edge(s) added</td></tr><tr><td><code>n_nodes_seen</code></td><td></td><td>How many unique nodes/variables are currently in network</td></tr><tr><td><code>n_subgraphs</code></td><td></td><td>How many isolated subgraphs/components of size &gt; 2 are in current network</td></tr><tr><td><code>n_triples</code></td><td></td><td>How many isolated subgraphs of size 3 or larger are in current network</td></tr><tr><td><code>max_size</code></td><td></td><td>Size in number of nodes of the largest current subgraph</td></tr><tr><td><code>max_rel_size</code></td><td></td><td>Proportion of all seen nodes (<code>n_nodes_seen</code>) that the largest subgraph includes. Large values indicate presence of a giant-component.</td></tr><tr><td><code>avg_size</code></td><td></td><td>Average size of subgraphs</td></tr><tr><td><code>avg_density</code></td><td></td><td>Average density of subgraphs. Scale from &gt;0 - 1. Where a density of 1 is a fully-connected subgraph.</td></tr><tr><td><code>subgraphs</code></td><td></td><td>List column of summary stats for each subgraph at a given step. See the <code>subgraph</code> list column section for more info.</td></tr></table></div>
+    
+
+<p>Dataframe with the following columns for each unique subgraph state.</p><table class="table table"><tr><td><strong>Column</strong></td><td></td><td><strong>Description</strong></td></tr><tr><td><code>step</code></td><td></td><td>Integer step, aka the number of unique edge strengths in network at state</td></tr><tr><td><code>n_edges</code></td><td></td><td>How many edges have been added thus far</td></tr><tr><td><code>strength</code></td><td></td><td>The lowest strength of the edge(s) added</td></tr><tr><td><code>n_nodes_seen</code></td><td></td><td>How many unique nodes/variables are currently in network</td></tr><tr><td><code>n_subgraphs</code></td><td></td><td>How many isolated subgraphs/components of size &gt; 2 are in current network</td></tr><tr><td><code>n_triples</code></td><td></td><td>How many isolated subgraphs of size 3 or larger are in current network</td></tr><tr><td><code>max_size</code></td><td></td><td>Size in number of nodes of the largest current subgraph</td></tr><tr><td><code>max_rel_size</code></td><td></td><td>Proportion of all seen nodes (<code>n_nodes_seen</code>) that the largest subgraph includes. Large values indicate presence of a giant-component.</td></tr><tr><td><code>avg_size</code></td><td></td><td>Average size of subgraphs</td></tr><tr><td><code>avg_density</code></td><td></td><td>Average density of subgraphs. Scale from &gt;0 - 1. Where a density of 1 is a fully-connected subgraph.</td></tr><tr><td><code>subgraphs</code></td><td></td><td>List column of summary stats for each subgraph at a given step. See the <code>subgraph</code> list column section for more info.</td></tr></table></div>
     <div id="subgraph-list-column">
     <h2><code>subgraph</code> list column</h2>
     
@@ -100,32 +107,34 @@ at the cost of speed and memory usage.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"><span class="va">virus_associations</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="va">virus_net</span>, <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html" class="external-link">desc</a></span><span class="op">(</span><span class="va">strength</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">calculate_subgraph_structure</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">virus_associations</span>, <span class="fl">1000</span><span class="op">)</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">virus_associations</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="va">virus_net</span>, <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html" class="external-link">desc</a></span><span class="op">(</span><span class="va">strength</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">calculate_subgraph_structure</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">virus_associations</span>, <span class="fl">1000</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 327 × 11</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     step n_edges strength n_nodes_seen n_subgraphs max_size rel_max_size</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>     1       1   0.091<span style="text-decoration: underline;">6</span>            2           1        2        1    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>     2       2   0.083<span style="text-decoration: underline;">6</span>            3           1        3        1    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>     3       3   0.075<span style="text-decoration: underline;">0</span>            5           2        3        0.6  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>     4       4   0.072<span style="text-decoration: underline;">9</span>            6           2        3        0.5  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>     5       5   0.072<span style="text-decoration: underline;">8</span>            6           2        3        0.5  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>     6       6   0.070<span style="text-decoration: underline;">4</span>            7           2        4        0.571</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>     7       7   0.068<span style="text-decoration: underline;">9</span>            8           2        4        0.5  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>     8       8   0.067<span style="text-decoration: underline;">6</span>            9           2        5        0.556</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>     9      10   0.065<span style="text-decoration: underline;">1</span>           12           3        5        0.417</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>    10      11   0.062<span style="text-decoration: underline;">3</span>           14           4        5        0.357</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 317 more rows, and 4 more variables: avg_size &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   avg_density &lt;dbl&gt;, n_triples &lt;int&gt;, subgraphs &lt;list&gt;</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># We can also return each nodes membership at every step</span></span>
-<span class="r-in"><span class="co"># although it will slow things down a bit</span></span>
-<span class="r-in"><span class="fu">calculate_subgraph_structure</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">virus_associations</span>, <span class="fl">1000</span><span class="op">)</span>,</span>
-<span class="r-in">                             return_subgraph_membership <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     step n_edges stren…¹ n_nod…² n_sub…³ max_s…⁴ rel_m…⁵ avg_s…⁶ avg_d…⁷ n_tri…⁸</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>     1       1  0.091<span style="text-decoration: underline;">6</span>       2       1       2   1         2     1           0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>     2       2  0.083<span style="text-decoration: underline;">6</span>       3       1       3   1         3     0.667       1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>     3       3  0.075<span style="text-decoration: underline;">0</span>       5       2       3   0.6       2.5   0.833       1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>     4       4  0.072<span style="text-decoration: underline;">9</span>       6       2       3   0.5       3     0.667       2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>     5       5  0.072<span style="text-decoration: underline;">8</span>       6       2       3   0.5       3     0.833       2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>     6       6  0.070<span style="text-decoration: underline;">4</span>       7       2       4   0.571     3.5   0.667       2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>     7       7  0.068<span style="text-decoration: underline;">9</span>       8       2       4   0.5       4     0.583       2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>     8       8  0.067<span style="text-decoration: underline;">6</span>       9       2       5   0.556     4.5   0.533       2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>     9      10  0.065<span style="text-decoration: underline;">1</span>      12       3       5   0.417     4     0.578       3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>    10      11  0.062<span style="text-decoration: underline;">3</span>      14       4       5   0.357     3.5   0.683       3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 317 more rows, 1 more variable: subgraphs &lt;list&gt;, and abbreviated</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   variable names ¹​strength, ²​n_nodes_seen, ³​n_subgraphs, ⁴​max_size,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ⁵​rel_max_size, ⁶​avg_size, ⁷​avg_density, ⁸​n_triples</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># We can also return each nodes membership at every step</span></span></span>
+<span class="r-in"><span><span class="co"># although it will slow things down a bit</span></span></span>
+<span class="r-in"><span><span class="fu">calculate_subgraph_structure</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">virus_associations</span>, <span class="fl">1000</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>                             return_subgraph_membership <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>first element used of 'length.out' argument</span>
 <span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in seq_len(nrow(res$subgraph_membership)):</span> argument must be coercible to non-negative integer</span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -140,7 +149,7 @@ at the cost of speed and memory usage.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

@@ -28,7 +28,7 @@ patterns in average strength."><!-- mathjax --><script src="https://cdnjs.cloudf
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -67,7 +67,7 @@ patterns in average strength.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">gather_avg_strength</span><span class="op">(</span><span class="va">association_pairs</span>, strength_column <span class="op">=</span> <span class="st">"strength"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">gather_avg_strength</span><span class="op">(</span><span class="va">association_pairs</span>, strength_column <span class="op">=</span> <span class="st">"strength"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -76,17 +76,22 @@ patterns in average strength.</p>
 <dd><p>dataframe with columns <code>a</code> and <code>b</code> representing the
 ids of the variables or nodes and columns <code>strength</code> that is a numeric
 indicator of strength of association (higher = stronger).</p></dd>
+
+
 <dt>strength_column</dt>
 <dd><p>Id of column that encodes the strength of the associations for pairs</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Dataframe with <code>id</code> and <code>avg_strength</code> columns for each unique variable in association pairs</p>
+    
+
+<p>Dataframe with <code>id</code> and <code>avg_strength</code> columns for each unique variable in association pairs</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">gather_avg_strength</span><span class="op">(</span><span class="va">virus_net</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">gather_avg_strength</span><span class="op">(</span><span class="va">virus_net</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 586 × 2</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    id                                      avg_strength</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
@@ -101,7 +106,8 @@ indicator of strength of association (higher = stronger).</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Aichi virus                                 0.004<span style="text-decoration: underline;">92</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Akabane virus                               0.002<span style="text-decoration: underline;">36</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 576 more rows</span></span>
-<span class="r-in"></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -116,7 +122,7 @@ indicator of strength of association (higher = stronger).</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

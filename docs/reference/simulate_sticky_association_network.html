@@ -28,7 +28,7 @@ are in general more associated than others.'><!-- mathjax --><script src="https:
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -67,40 +67,55 @@ are in general more associated than others.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">simulate_sticky_association_network</span><span class="op">(</span>
-  n_variables <span class="op">=</span> <span class="fl">50</span>,
-  n_clusters <span class="op">=</span> <span class="fl">4</span>,
-  cluster_coherence <span class="op">=</span> <span class="fl">2</span>,
-  stickiness_dist <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="op">{</span>     <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/Beta.html" class="external-link">rbeta</a></span><span class="op">(</span><span class="va">n</span>, shape1 <span class="op">=</span> <span class="fl">1</span>, shape2 <span class="op">=</span> <span class="fl">4</span><span class="op">)</span> <span class="op">}</span>,
-  association_dist <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="op">{</span>     <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/Beta.html" class="external-link">rbeta</a></span><span class="op">(</span><span class="va">n</span>, shape1 <span class="op">=</span> <span class="fl">0.5</span>, shape2 <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op">}</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">simulate_sticky_association_network</span><span class="op">(</span></span>
+<span>  n_variables <span class="op">=</span> <span class="fl">50</span>,</span>
+<span>  n_clusters <span class="op">=</span> <span class="fl">4</span>,</span>
+<span>  cluster_coherence <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>  stickiness_dist <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="op">{</span></span>
+<span>     <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/Beta.html" class="external-link">rbeta</a></span><span class="op">(</span><span class="va">n</span>, shape1 <span class="op">=</span> <span class="fl">1</span>, shape2 <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span>
+<span> <span class="op">}</span>,</span>
+<span>  association_dist <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="op">{</span></span>
+<span>     <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/Beta.html" class="external-link">rbeta</a></span><span class="op">(</span><span class="va">n</span>, shape1 <span class="op">=</span> <span class="fl">0.5</span>, shape2 <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
+<span> <span class="op">}</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>n_variables</dt>
 <dd><p>How many variables will be simulated</p></dd>
+
+
 <dt>n_clusters</dt>
 <dd><p>Controls how many clusters are randomly assigned to nodes</p></dd>
+
+
 <dt>cluster_coherence</dt>
 <dd><p>Scalar that multiplies random association value for
 nodes in the same clusters. E.g. A value of <code>2</code> means variables in same
 cluster have on average twice the association strength. Most likely above
 1.</p></dd>
+
+
 <dt>stickiness_dist</dt>
 <dd><p>Function that takes a single input: <code>n</code> that will then
 generate <code>n</code> values from a distribution used to assign stickiness level for
 each variable. These values will be scaled to an average of 1 so stickiness
 doesn't change association distribution too much.</p></dd>
+
+
 <dt>association_dist</dt>
 <dd><p>Function of same format as <code>stickiness_dist</code> that
 instead is used to generate raw associations between pairs of nodes. The
 values will then be scaled by <code>cluster_coherence</code> and each variable's
 stickiness.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>List with <code>variables</code> with info about each variable (<code>id</code>,
+    
+
+<p>List with <code>variables</code> with info about each variable (<code>id</code>,
 <code>stickiness</code> scalar, and <code>cluster</code> id) and <code>associations</code> which contains
 the simulated associations in the format that works for all the functions
 that take <code>association_pairs</code> as an input.</p>
@@ -108,47 +123,48 @@ that take <code>association_pairs</code> as an input.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"><span class="co"># Simulate an association network with flat stickiness profile</span></span>
-<span class="r-in"><span class="fu">simulate_sticky_association_network</span><span class="op">(</span></span>
-<span class="r-in">  n_variables <span class="op">=</span> <span class="fl">10</span>,</span>
-<span class="r-in">  n_clusters <span class="op">=</span> <span class="fl">3</span>,</span>
-<span class="r-in">  cluster_coherence <span class="op">=</span> <span class="fl">2</span>,</span>
-<span class="r-in">  stickiness_dist <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="op">{</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">}</span>,</span>
-<span class="r-in">  association_dist <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="op">{</span><span class="fu"><a href="https://rdrr.io/r/stats/Beta.html" class="external-link">rbeta</a></span><span class="op">(</span><span class="va">n</span>, shape1 <span class="op">=</span> <span class="fl">1</span>, shape2 <span class="op">=</span> <span class="fl">10</span><span class="op">)</span><span class="op">}</span></span>
-<span class="r-in"><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Simulate an association network with flat stickiness profile</span></span></span>
+<span class="r-in"><span><span class="fu">simulate_sticky_association_network</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  n_variables <span class="op">=</span> <span class="fl">10</span>,</span></span>
+<span class="r-in"><span>  n_clusters <span class="op">=</span> <span class="fl">3</span>,</span></span>
+<span class="r-in"><span>  cluster_coherence <span class="op">=</span> <span class="fl">2</span>,</span></span>
+<span class="r-in"><span>  stickiness_dist <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="op">{</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">}</span>,</span></span>
+<span class="r-in"><span>  association_dist <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="op">{</span><span class="fu"><a href="https://rdrr.io/r/stats/Beta.html" class="external-link">rbeta</a></span><span class="op">(</span><span class="va">n</span>, shape1 <span class="op">=</span> <span class="fl">1</span>, shape2 <span class="op">=</span> <span class="fl">10</span><span class="op">)</span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $variables</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 10 × 3</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       id stickiness cluster</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>     1      2.00        2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>     2      0.979       3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>     3      0.953       3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>     4      0.831       2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>     5      0.966       2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>     6      0.698       3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>     7      1.41        3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>     8      0.467       1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>     9      1.38        1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>    10      0.315       2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>     1    1.37          2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>     2    0.593         1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>     3    0.889         2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>     4    1.73          3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>     5    0.647         1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>     6    1.64          3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>     7    1.60          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>     8    1.18          3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>     9    0.001<span style="text-decoration: underline;">71</span>       3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>    10    0.355         2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $associations</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 45 × 3</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        b same_cluster strength</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>     2 FALSE         0.857  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>     3 FALSE         0.089<span style="text-decoration: underline;">6</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>     4 TRUE          0.728  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>     5 TRUE          0.499  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>     6 FALSE         0.107  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>     7 FALSE         0.005<span style="text-decoration: underline;">71</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>     8 FALSE         0.003<span style="text-decoration: underline;">18</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>     9 FALSE         0.172  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>    10 TRUE          0.712  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>     3 TRUE          0.211  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>     2 FALSE          0.368 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>     3 TRUE           0.172 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>     4 FALSE          0.637 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>     5 FALSE          0.072<span style="text-decoration: underline;">2</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>     6 FALSE          0.333 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>     7 FALSE          0.688 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>     8 FALSE          0.187 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>     9 FALSE          0.211 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>    10 TRUE           0.625 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>     3 FALSE          0.293 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 35 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -163,7 +179,7 @@ that take <code>association_pairs</code> as an input.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

@@ -31,7 +31,7 @@ for both nodes and its normalized strength is 1/((0.5 + 0.75)/2) = 1.6."><!-- ma
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -73,13 +73,13 @@ for both nodes and its normalized strength is <code>1/((0.5 + 0.75)/2) = 1.6</co
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">build_relative_associations</span><span class="op">(</span>
-  <span class="va">association_pairs</span>,
-  strength_col <span class="op">=</span> <span class="st">"strength"</span>,
-  rank_based <span class="op">=</span> <span class="cn">FALSE</span>,
-  <span class="va">impute_missing</span>,
-  return_imputed_pairs <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">build_relative_associations</span><span class="op">(</span></span>
+<span>  <span class="va">association_pairs</span>,</span>
+<span>  strength_col <span class="op">=</span> <span class="st">"strength"</span>,</span>
+<span>  rank_based <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  <span class="va">impute_missing</span>,</span>
+<span>  return_imputed_pairs <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -88,23 +88,32 @@ for both nodes and its normalized strength is <code>1/((0.5 + 0.75)/2) = 1.6</co
 <dd><p>dataframe with columns <code>a</code> and <code>b</code> representing the
 ids of the variables or nodes and columns <code>strength</code> that is a numeric
 indicator of strength of association (higher = stronger).</p></dd>
+
+
 <dt>rank_based</dt>
 <dd><p>Should the relative strength be calculated using ranks?
 Here instead of using the raw values of strength, the ranking of edges is
 used with the max "strength" being the number of edges. Set to <code>FALSE</code> to
 use the raw strengths.</p></dd>
+
+
 <dt>impute_missing</dt>
 <dd><p>If not all possible pairs are present in
 <code>association_pairs</code>, this parameter controls how the function deals with
 these missing values. Current options are <code>"minimum"</code>(lowest seen edge
 value is substituted) and <code>zero</code> (<code>0</code> is substituted). See the section
 "missing association pairs" for more details.</p></dd>
+
+
 <dt>return_imputed_pairs</dt>
 <dd><p>If pairs were imputed to calculate averages, should those imputed pairs also be returned?</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A new association pairs dataframe (with columns <code>a</code>, <code>b</code>, and
+    
+
+<p>A new association pairs dataframe (with columns <code>a</code>, <code>b</code>, and
 <code>strength</code>) where <code>strength</code> is transformed to relative strength.</p>
     </div>
     <div id="missing-association-pairs">
@@ -122,12 +131,6 @@ naturally lower bounded at <code>0</code>.</p></li>
 <li><p><code>"ignore"</code>: Here no action is taken and the averages are just used as is. Since it is likely this missingness is not at random it's likely the best option is an imputation of some sort.</p></li>
 </ul></div>
 
-    <div id="ref-examples">
-    <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"></span>
-</code></pre></div>
-    </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top"><h2 data-toc-skip>Contents</h2>
@@ -140,7 +143,7 @@ naturally lower bounded at <code>0</code>.</p></li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>
