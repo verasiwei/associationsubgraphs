@@ -59,6 +59,3 @@ naturally lower bounded at \code{0}.
 }
 }
 
-\examples{
-
-}

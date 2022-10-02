@@ -317,12 +317,12 @@ function setup_network_views({ div, all_edges, subgraph_info, sizes = {} }) {
     // Draw axes
 
     const too_thin_for_unit_bars = subgraph_pos.size.h / largest_subgraph < 5; 
-    const largest_subgraph_10 = largest_subgraph >= 10;
-    var subgraph_size_10 = subgraphs.size;
+    const largest_subgraph_10 = largest_subgraph >= 10; //added this: to check if the subgraph size is greater than 10
+    var subgraph_size_10 = subgraphs.size; //added this: assign each subgraph size
     //var subgraph_size_10_label = subgraph_size_10 ? 1:0;
     //const subgraph_size_10_sum = d3.sum(subgraph_size_10_label);
     const subgraph_size_10_sum = subgraph_size_10.reduce(function(n, val) {
-    return n + (val >= 10);}, 0);
+    return n + (val >= 10);}, 0); //added this: collect size that greater than 10 in descending order
 
     subgraph.g
       .select_append("g.size_axis")
@@ -338,7 +338,7 @@ function setup_network_views({ div, all_edges, subgraph_info, sizes = {} }) {
 
     subgraph.g
       .selectAll(`text.size_labels`)
-      .data(subgraphs_df.head(largest_subgraph_10 ? subgraph_size_10_sum:0)) 
+      .data(subgraphs_df.head(largest_subgraph_10 ? subgraph_size_10_sum:0)) //changed this: denote size if size >=10
       .join("text")
       .text((d) => d.size)
       .attr("class", "size_labels")
@@ -1137,10 +1137,10 @@ function draw_timelines(
   timelines.g
     .append("text")
     .attr("class", "x label")
-    .attr("text-anchor", "end")
-    .attr("x", w/2)
-    .attr("y",h+25)
-    .text("step →");
+    .attr("text-anchor", "middle")
+    .attr("x", w/2+15)
+    .attr("y",h+26)
+    .text("step");//add xaxis title
 
   const chart_w = w - max_label_width;
 

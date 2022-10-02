@@ -20,7 +20,7 @@ Imports:
     Rcpp,
     r2d3 (>= 0.2.4)
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.1
 Suggests: 
     roxygen2,
     knitr,
@@ -32,3 +32,4 @@ Depends:
 VignetteBuilder: knitr
 LinkingTo: 
     Rcpp
+Repository: associationsubgraphs
