@@ -1,7 +1,7 @@
 ---
 title: "Structure of subgraphs results"
 author: "Nick Strayer"
-date: "6/18/2020"
+date: "<small>`r Sys.Date()`</small>"
 output: html_document
 ---
 

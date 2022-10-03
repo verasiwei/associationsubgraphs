@@ -1,7 +1,7 @@
 ---
 title: "How to build associationsubgraphs step by step?"
 # author: "Siwei Zhang"
-date: "6/13/2022"
+date: "<small>`r Sys.Date()`</small>"
 output: 
   html_document:
     toc_depth: 2
@@ -220,7 +220,7 @@ visualize_subgraph_structure(
 
 # Generating publishable web content
 
-* When you want to render the visualization or publish this visualization, `visualize_subgraph_structure` creates an R htmlwidget to host the visualization using `r2d3`, which means you can directly include your codes into a `.Rmd` file and then generate publishable web content by `html` file. This tool is efficient as well. For instance, total running time of calculating the subgraph structure for downstream visualization and final visualization of this Phecode pairs data on a 16 GB RAM is about 14 seconds.
+* When you want to render the visualization or publish this visualization, `visualize_subgraph_structure` creates an R htmlwidget to host the visualization using `r2d3`, which means you can directly include your codes into a `.Rmd` file and then generate publishable web content by `html` file. This tool is efficient as well. For instance, total running time of calculating the subgraph structure for downstream visualization and final visualization of this Phecode pairs data on a 16 GB RAM and $Intel^{\circledR}$ $Core^{TM}$ $i5$-$10210U$ CPU is about 14 seconds.
 
 
 

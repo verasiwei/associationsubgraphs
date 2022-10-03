@@ -6,7 +6,7 @@ URL: http://github.com/tbilab/associationsubgraphs, http://github.com/tbilab/ass
 Authors@R: c(
     person("Nick", "Strayer", role = c("aut")
     ),
-    person("Siwei", "Zhang", role = c("cre"),email="verazsw@hotmail.com"
+    person("Siwei", "Zhang", role = c("cre"),email="siweizhang0730@gmail.com"
     ),
     person("Yaomin", "Xu", role = c("ths")
     )
