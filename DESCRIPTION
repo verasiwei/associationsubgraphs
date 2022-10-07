@@ -1,8 +1,7 @@
 Package: associationsubgraphs
 Type: Package
-Title: Investigate association networks using relative association and intepretable subgraph clustering
+Title: Interactive network-based clustering and investigation of multimorbidity association matrices with associationSubgraphs
 Version: 0.1.0
-URL: http://github.com/tbilab/associationsubgraphs, http://github.com/tbilab/associationsubgraphs
 Authors@R: c(
     person("Nick", "Strayer", role = c("aut")
     ),
@@ -32,4 +31,4 @@ Depends:
 VignetteBuilder: knitr
 LinkingTo: 
     Rcpp
-Repository: associationsubgraphs
+Repository: associationsubgraphs  
